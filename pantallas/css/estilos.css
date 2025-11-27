@@ -1,0 +1,93 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* FONDO */
+body {
+    background: #e9eef9;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* TARJETA */
+.card {
+    background: #fff;
+    width: 380px;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0px 6px 16px rgba(0,0,0,0.15);
+    text-align: center;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* ANIMACIÓN */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* TITULO */
+.card h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 22px;
+}
+
+/* INPUTS */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+input:focus {
+    border-color: #4a74ff;
+    outline: none;
+    box-shadow: 0 0 6px rgba(74,116,255,0.4);
+}
+
+/* BOTÓN */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #4a74ff;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: opacity .3s ease;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+/* MENSAJES */
+#msg {
+    margin-top: 15px;
+    color: red;
+    font-size: 14px;
+}
+
+/********* DENEGADO *********/
+.card.denied {
+    border-left: 10px solid #d00000;
+}
+
+.card.denied h1 {
+    font-size: 22px;
+    color: #d00000;
+    margin-bottom: 10px;
+}
