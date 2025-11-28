@@ -225,30 +225,4 @@ headerB64.payloadB64.firmaSegura
 → Borra token y usuario  
 → Redirige al login
 
----
 
-# 📌 9. Capturas recomendadas (opcional)
-
-📸 Login  
-📸 Bienvenida  
-📸 Denied  
-📸 Consola con token generado  
-
-*(Puedes añadirlas directamente desde GitHub.)*
-
----
-
-# 📌 10. Autor
-
-Proyecto desarrollado por **Eva Rodríguez Delgado**, alumna de **2º DAW**.
-
----
-
-# 🎉 FIN DEL README
-Este README cumple:
-
-✔ Bonito  
-✔ Completo  
-✔ Profesional  
-✔ Forma parte de un proyecto real  
-✔ Ideal para entregar al profesor o subir a GitHub  
