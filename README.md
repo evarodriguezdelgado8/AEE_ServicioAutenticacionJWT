@@ -1,220 +1,44 @@
-**Servicio de Autenticación con API REST – JWT Manual**
+# 🟦 AEE – Servicio de Autenticación con API REST + JWT Manual (Node.js)
 
-Proyecto para la asignatura Desarrollo Web en Entorno Servidor (DWES / DWEC).
+Actividad realizada para el módulo **DWEC** del ciclo DAW, siguiendo las especificaciones del profesor **Carlos Basulto**.  
+El objetivo es implementar un sistema básico de autenticación usando:
 
-Este proyecto implementa un sistema de autenticación mediante una API REST con un JWT creado manualmente, sin librerías externas, siguiendo los requisitos del profesor.
+✅ Node.js + Express  
+✅ API REST  
+✅ JWT manual (sin librerías externas)  
+✅ HTML + CSS + JavaScript (fetch + localStorage)  
+✅ Control de acceso a rutas protegidas  
 
-**Incluye:**
+---
 
-  Pantalla de login
-  
-  Validación de credenciales
-  
-  Generación de JWT manual
-  
-  Ruta protegida /api/welcome
-  
-  Control de acceso con error 403
-  
-  Pantalla de acceso denegado
-  
-  Cerrar sesión
-  
-  Interfaz estilo tarjeta con CSS moderno
+# 📌 1. Objetivo de la Aplicación
 
-**Tecnologías utilizadas**
+La aplicación permite:
 
-  Node.js
-  
-  Express
-  
-  CORS
-  
-  HTML5
-  
-  CSS3
+- Iniciar sesión con usuario y contraseña.
+- Generar un **JWT manual** (Base64URL, sin firma criptográfica).
+- Acceder a una pantalla protegida solo si el token es válido.
+- Mostrar un mensaje personalizado y la hora actual.
+- Denegar el acceso si:
+  - No envías token
+  - El token es inválido
+  - El token está manipulado
+  - El token ha expirado
+- Cerrar sesión eliminando el token del navegador.
 
-  JavaScript (fetch, localStorage)
+---
 
-**Estructura del proyecto**
-    AEE_ServicioAutenticacionJWT/
-    │
-    ├── server.js
-    ├── package.json
-    ├── package-lock.json
-    │
-    ├── css/
-    │   └── estilos.css
-    │
-    ├── pantallas/
-    │   ├── login.html
-    │   ├── welcome.html
-    │   ├── denied.html
-    │   │
-    │   │
-    │   └── js/
-    │       ├── login.js
-    │       └── welcome.js
+# 📌 2. Tecnologías utilizadas
 
-**JWT Manual Implementado**
+| Parte | Tecnología |
+|-------|------------|
+| Backend | Node.js + Express |
+| Token | JWT manual (header + payload + firma codificada en Base64URL) |
+| Frontend | HTML, CSS, JavaScript |
+| Autenticación | localStorage + Authorization Bearer |
+| Validación | Middleware personalizado |
 
-  Este proyecto NO usa la librería jsonwebtoken.
-  El token se genera manualmente.
-  
-  ✔ Formato del token:
-  HEADER.PAYLOAD.FIRMA
-  
-  ✔ Codificación usada
-  
-  Se utiliza Base64URL para las tres partes.
-  
-  ✔ Firma
-  
-  La firma se genera así:
-  
-  firmaOriginal = headerB64 + "." + payloadB64
-  firmaSegura = base64urlEncode(firmaOriginal)
-  
-  ✔ Token final
-  headerB64.payloadB64.firmaSegura
+---
 
+# 📌 3. Estructura del Proyecto
 
-  Esto evita problemas con caracteres especiales y mantiene compatibilidad con cualquier navegador.
-
-**Instalación**
-
-  Clona o copia el proyecto.
-  
-  Instala dependencias:
-  
-  npm install
-  
-  
-  Inicia el servidor:
-  
-  npm start
-
-
-  El servidor se abrirá en:
-  
-  http://localhost:3000
-
-** Usuarios permitidos**
-    Usuario	Contraseña
-    admin	1234
-    user	abcd
-    
-**Endpoints de la API**
-  🔹 POST /api/login
-
-      Envía usuario y contraseña:
-      
-      {
-        "username": "admin",
-        "password": "1234"
-      }
-      
-      
-      ✔ Devuelve:
-      
-      {
-        "token": "JWT_manual...",
-        "username": "admin"
-      }
-
-    
-      ❌ Si las credenciales son incorrectas:
-      401 Unauthorized
-    
-  🔹 GET /api/welcome
-    
-    Ruta protegida.
-    Requiere:
-    
-    Authorization: Bearer <token>
-    
-    
-    ✔ Devuelve:
-    
-    {
-      "mensaje": "Bienvenido, admin",
-      "hora": "12:34:02",
-      "extra": "Acceso permitido al área protegida."
-    }
-    
-    
-    ❌ Si el token es inválido o caducado:
-    403 Forbidden
-
-🖥️ Funcionamiento de las pantallas
-✔ Login (login.html)
-
-Introduce usuario y contraseña
-
-Se envían con fetch
-
-Si es correcto → se guarda token en localStorage
-
-Redirige a welcome.html
-
-✔ Pantalla de bienvenida (welcome.html)
-
-Solicita /api/welcome con el token
-
-Muestra:
-
-Nombre del usuario
-
-Hora actual
-
-Mensaje extra
-
-Botón de cerrar sesión → elimina token y vuelve al login
-
-✔ Acceso denegado (denied.html)
-
-Se muestra si:
-
-No hay token
-
-El token está mal formado
-
-El token está manipulado
-
-El token ha caducado
-
-🎨 Diseño (Tarjetas)
-
-El proyecto usa un diseño moderno basado en tarjetas:
-
-Tarjeta centrada
-
-Sombra suave
-
-Animación de entrada
-
-Botones y campos de entrada estilizados
-
-🔍 Cómo probar el sistema
-
-Abrir:
-
-http://localhost:3000/login.html
-
-
-Iniciar sesión con admin / 1234.
-
-Verificar:
-
-Redirección correcta
-
-Muestra datos protegidos
-
-Probar logout
-
-Intentar entrar a:
-
-http://localhost:3000/welcome.html
-
-
-sin token → debe redirigir a denied.html.
