@@ -72,13 +72,13 @@ AEE_ServicioAutenticacionJWT/
 ├── server.js
 ├── package.json
 │
+├── css/
+│   └── estilos.css
 └── pantallas/
     ├── login.html
     ├── welcome.html
     ├── denied.html
     │
-    ├── css/
-    │   └── estilos.css
     │
     └── js/
         ├── login.js
